@@ -1,29 +1,99 @@
-local CorrectKey = "CONTROL"
-local AdLink = "https://discord.gg/EFe7J6ud"
+local ValidKey = "CONTROL"
+local AdLink = "https://discord.gg/B56cBRYAng"
 
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
+local MainFrame = Instance.new("Frame")
+MainFrame.Size = UDim2.new(0, 300, 0, 180)
+MainFrame.Position = UDim2.new(0.5, -150, 0.5, -90)
+MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+MainFrame.Parent = ScreenGui
+
+local FrameCorner = Instance.new("UICorner")
+FrameCorner.CornerRadius = UDim.new(0, 10)
+FrameCorner.Parent = MainFrame
+
+local TitleLabel = Instance.new("TextLabel")
+TitleLabel.Size = UDim2.new(1, 0, 0, 30)
+TitleLabel.Position = UDim2.new(0, 0, 0, 10)
+TitleLabel.Text = "Key System [JDark]"
+TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TitleLabel.Font = Enum.Font.FredokaOne
+TitleLabel.TextSize = 20
+TitleLabel.BackgroundTransparency = 1
+TitleLabel.Parent = MainFrame
+
 local TextBox = Instance.new("TextBox")
-TextBox.Size = UDim2.new(0, 200, 0, 50)
-TextBox.Position = UDim2.new(0.5, -100, 0.3, 0)
-TextBox.PlaceholderText = "Enter Key"
-TextBox.Parent = ScreenGui
+TextBox.Size = UDim2.new(0.8, 0, 0, 40)
+TextBox.Position = UDim2.new(0.1, 0, 0.3, 0)
+TextBox.PlaceholderText = "Enter Key Here"
+TextBox.Text = ""
+TextBox.Font = Enum.Font.FredokaOne
+TextBox.TextSize = 20
+TextBox.Parent = MainFrame
+
+local TextBoxCorner = Instance.new("UICorner")
+TextBoxCorner.CornerRadius = UDim.new(0, 8)
+TextBoxCorner.Parent = TextBox
 
 local VerifyButton = Instance.new("TextButton")
-VerifyButton.Size = UDim2.new(0, 200, 0, 50)
-VerifyButton.Position = UDim2.new(0.5, -100, 0.4, 0)
+VerifyButton.Size = UDim2.new(0.38, 0, 0, 40)
+VerifyButton.Position = UDim2.new(0.1, 0, 0.65, 0)
 VerifyButton.Text = "Verify Key"
-VerifyButton.Parent = ScreenGui
+VerifyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+VerifyButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+VerifyButton.Font = Enum.Font.FredokaOne
+VerifyButton.TextSize = 20
+VerifyButton.Parent = MainFrame
+
+local VerifyCorner = Instance.new("UICorner")
+VerifyCorner.CornerRadius = UDim.new(0, 8)
+VerifyCorner.Parent = VerifyButton
 
 local CopyButton = Instance.new("TextButton")
-CopyButton.Size = UDim2.new(0, 200, 0, 50)
-CopyButton.Position = UDim2.new(0.5, -100, 0.5, 0)
-CopyButton.Text = "Get Key (Copy Link)"
-CopyButton.Parent = ScreenGui
+CopyButton.Size = UDim2.new(0.38, 0, 0, 40)
+CopyButton.Position = UDim2.new(0.52, 0, 0.65, 0)
+CopyButton.Text = "Get Key"
+CopyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CopyButton.BackgroundColor3 = Color3.fromRGB(0, 200, 0)
+CopyButton.Font = Enum.Font.FredokaOne
+CopyButton.TextSize = 20
+CopyButton.Parent = MainFrame
+
+local CopyCorner = Instance.new("UICorner")
+CopyCorner.CornerRadius = UDim.new(0, 8)
+CopyCorner.Parent = CopyButton
+
+local DesignerLabel = Instance.new("TextLabel")
+DesignerLabel.Size = UDim2.new(1, 0, 0, 20)
+DesignerLabel.Position = UDim2.new(0, 0, 0.88, 0)
+DesignerLabel.Text = "Designed By: Shinzou"
+DesignerLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+DesignerLabel.BackgroundTransparency = 0.5
+DesignerLabel.Font = Enum.Font.FredokaOne
+DesignerLabel.TextSize = 14
+DesignerLabel.Parent = MainFrame
+
+local function CheckLabel()
+    while task.wait(1) do
+        if not DesignerLabel.Parent then
+            VerifyButton.Text = "Missing Object!"
+            CopyButton.Text = "Missing Object!"
+            VerifyButton.TextColor3 = Color3.fromRGB(255, 0, 0)
+            CopyButton.TextColor3 = Color3.fromRGB(255, 0, 0)
+            VerifyButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+            CopyButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+            VerifyButton.Active = false
+            CopyButton.Active = false
+            break
+        end
+    end
+end
+task.spawn(CheckLabel)
 
 VerifyButton.MouseButton1Click:Connect(function()
-    if TextBox.Text == CorrectKey then
+    if TextBox.Text == ValidKey then
         ScreenGui:Destroy()
         print("Access Granted!") 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/RedJDark/MAIN/refs/heads/main/eyeyey"))()
@@ -36,5 +106,5 @@ CopyButton.MouseButton1Click:Connect(function()
     setclipboard(AdLink)
     CopyButton.Text = "Link Copied!"
     task.wait(1.5)
-    CopyButton.Text = "Get Key (Copy Link)"
+    CopyButton.Text = "Get Key"
 end)
