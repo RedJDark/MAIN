@@ -1,5 +1,5 @@
-local ValidKey = "CONTROL"
-local AdLink = "https://discord.gg/EFe7J6ud"
+local ValidKey = "thx"
+local AdLink = "https://link-target.net/481807/key-for-control"
 
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
